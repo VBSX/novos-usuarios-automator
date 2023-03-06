@@ -1,4 +1,4 @@
-class usuario:
+class Usuario:
     def __init__(self, nome, cpf):
         self.nome = nome
         self.cpf = cpf
@@ -25,5 +25,5 @@ class usuario:
 if  __name__ == "__main__":
     nome = "SAMUEL XAVARAL DOS SILVA"
     cpf = "053.014.795-51"
-    novo_user_teste = usuario(nome, cpf)
+    novo_user_teste = Usuario(nome, cpf)
     print(novo_user_teste.reset_senha("adsa#12312"))
