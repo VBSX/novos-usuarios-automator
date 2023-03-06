@@ -2,6 +2,8 @@ import sys
 import random
 from new_user import *
 from PySide6 import QtCore, QtWidgets, QtGui
+from PySide6.QtGui import QGuiApplication
+
 from PyQt5.QtCore import pyqtSignal, QObject
 import os
 import webbrowser
@@ -126,7 +128,7 @@ class Second_Widget(QtWidgets.QWidget):
         self.setWindowTitle('Novo Usuário')
         self.setWindowIcon(QtGui.QIcon(image_path))
         #
-        self.new_user = usuario(user, cpf)
+        self.new_user = Usuario(user, cpf)
         self.lbl = QtWidgets.QLabel(alignment=QtCore.Qt.AlignCenter)
         self.lbl.setText("")
         self.password = password
@@ -157,38 +159,38 @@ class Second_Widget(QtWidgets.QWidget):
     
     
     def copy_password(self):
-        clip = QtWidgets.QApplication.clipboard()
-        clip.clear(mode=clip.Clipboard)
-        clip.setText(self.password,  mode=clip.Clipboard)
-        
+        clip = QGuiApplication.clipboard()
+        clip.clear()
+        clip.setText(self.password)
+
          
     def copy_username(self):
         user = self.new_user.filtrar_nome()
-        clip = QtWidgets.QApplication.clipboard()
-        clip.clear(mode=clip.Clipboard)
-        clip.setText(user,  mode=clip.Clipboard)
+        clip = QGuiApplication.clipboard()
+        clip.clear()
+        clip.setText(user)
         
 
     def copy_cpf(self):
         cpf = self.new_user.filtrar_cpf()
-        clip = QtWidgets.QApplication.clipboard()
-        clip.clear(mode=clip.Clipboard)
-        clip.setText(cpf,  mode=clip.Clipboard)
+        clip = QGuiApplication.clipboard()
+        clip.clear()
+        clip.setText(cpf)
         
         
     def copy_message_reset(self):
         message = self.new_user.reset_senha(self.password)
-        clip = QtWidgets.QApplication.clipboard()
-        clip.clear(mode=clip.Clipboard)
-        clip.setText(message,  mode=clip.Clipboard)
+        clip = QGuiApplication.clipboard()
+        clip.clear()
+        clip.setText(message)
         self.show_dialog('O Conteúdo foi copiado para a area de transferência')
         
         
     def copy_message_new_user(self):
         message = self.new_user.novo_usuario(self.password)
-        clip = QtWidgets.QApplication.clipboard()
-        clip.clear(mode=clip.Clipboard)
-        clip.setText(message,  mode=clip.Clipboard)
+        clip = QGuiApplication.clipboard()
+        clip.clear()
+        clip.setText(message)
         self.show_dialog('O Conteúdo foi copiado para a area de transferência')
 
 
